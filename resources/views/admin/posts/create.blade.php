@@ -34,7 +34,7 @@
     <div class="my-4">
         <label for="category_id" class="form-label">categoria:</label>
         <select type="text" name="category_id" id="category_id" class="form-control
-        @error('category')
+        @error('category_id')
             is-invalid
         @enderror"
         >
@@ -44,26 +44,16 @@
                     @if ($category->id == old('category_id'))
                        selected    
                     @endif
-                >{{ $category->name }}</option>
+                > {{ $category->name }} </option>
             @endforeach
         </select>
 
-        @error('title')
+        @error('category_id')
             <div class="alert alert-danger mt-3">{{ $message }}</div>
         @enderror
     </div>
 {{-- descrizione---------------------------------------------------- --}}
-    {{-- <div class="my4">
-        <label for="description">descrizione:</label>
-        <textarea name="desription" id="description" class="form-control
-        @error('description')
-            is-invalid
-        @enderror"
-        rows="10">{{old('description')}}</textarea>
-        @error('description')
-            <div class="alert alert-danger mt-3">{{ $message }}</div>
-        @enderror
-    </div> --}}
+
     <div class="my-4">
         <label for="description" class="form-label">descrizione:</label>
         <textarea id="description" name="description" class="form-control

@@ -8,7 +8,7 @@
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
-        </div>    
+        </div>
     @endif
     <form action="{{route('admin.posts.update', $post->id)}}" method="POST">
     @csrf
@@ -26,10 +26,13 @@
             <div class="alert alert-danger mt-3">{{ $message }}</div>
         @enderror
     </div>
+
+{{-- categorie---------------------------------------------- --}}
+
     <div class="my-4">
         <label for="category" class="form-label">category:</label>
         <select class="form-control
-        @error('category')
+        @error('category_id')
             is-invalid
         @enderror"
         name="category_id" id="category">
@@ -37,13 +40,13 @@
             @foreach ($categories as $category)
                 <option value="{{$category->id}}"
                     @if ($category->id == old('category_id', $post->category_id)) selected @endif>
-                    
+
                     {{$category->name}}
                 </option>
             @endforeach
-            
+
         </select>
-        @error('category')
+        @error('category_id')
             <div class="alert alert-danger mt-3">{{ $message }}</div>
         @enderror
     </div>
@@ -63,5 +66,5 @@
     <a href="{{route('admin.posts.index')}}" class="btn btn-light">Torna indietro</a>
       <button type="submit" class="btn btn-primary">salva modifiche</button>
     </form>
-    
+
 @endsection
