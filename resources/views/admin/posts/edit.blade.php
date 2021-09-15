@@ -27,12 +27,35 @@
         @enderror
     </div>
     <div class="my-4">
+        <label for="category" class="form-label">category:</label>
+        <select class="form-control
+        @error('category')
+            is-invalid
+        @enderror"
+        name="category_id" id="category">
+            <option value="">--seleziona categoria--</option>
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}"
+                    @if ($category->id == old('category_id', $post->category_id)) selected @endif>
+                    
+                    {{$category->name}}
+                </option>
+            @endforeach
+            
+        </select>
+        @error('category')
+            <div class="alert alert-danger mt-3">{{ $message }}</div>
+        @enderror
+    </div>
+
+    {{-- descrizione --}}
+    <div class="my-4">
         <label for="description" class="form-label">descrizione:</label>
-        <textarea name="description" class="form-control
+        <textarea id="description" name="description" class="form-control
         @error('description')
             is-invalid
         @enderror"
-        id="description"  rows="6">{{old('description', $post->description)}}</textarea>
+          rows="6">{{old('description', $post->description)}}</textarea>
         @error('description')
             <div class="alert alert-danger mt-3">{{ $message }}</div>
         @enderror

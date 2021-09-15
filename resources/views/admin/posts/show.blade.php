@@ -9,8 +9,9 @@
                 <h4>{{$post->title}}</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{$post->slug}}</h5>
-                <h6 class="card-text">{{$post->description}}</h6>
+                <h5 class="card-title">slug:  {{$post->slug}}</h5>
+                <h6 class="card-text">descrizione:  {{$post->description}}</h6>
+                <h4>categoria:  {{ $post->category->name }}</h4>
             </div>
 
         </div>
